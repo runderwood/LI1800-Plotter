@@ -9,6 +9,7 @@ def main(args):
     ap.add_argument('--reffile', help="reflectance file", nargs=1, required=True)
     ap.add_argument('--txfile', help="transmittance file", nargs=1, required=True)
     ap.add_argument('--alpha', help="print absorptivity (alpha) rather than transmissivity (tau)", default=False, action="store_true")
+    ap.add_argument('--absorptance', help="print absorptance rather than tau or alpha", default=False, action="store_true")
     params = ap.parse_args(args).__dict__
     reffile = open(params["reffile"][0],"r")
     txfile = open(params["txfile"][0],"r")
@@ -24,10 +25,13 @@ def main(args):
             txrows.append(parsed)
     refarr = array(refrows)
     txarr = array(txrows)
+    absarr = 1.0 - (refarr[:,1] + txarr[:,1])
     tauarr = txarr[:,1] / (1.0 - refarr[:,1])
     alpharr = 1.0 - tauarr
     if params["alpha"]:
         tauarr = alpharr
+    elif params["absorptance"]:
+        tauarr = absarr
     for i,tau in enumerate(tauarr):
         print "%d %0.4e" % (refarr[i,0],tau)
 
