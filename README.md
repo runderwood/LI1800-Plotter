@@ -1,4 +1,4 @@
-== LI1800 Plotter ==
+## LI1800 Plotter ##
 
 Requires: Python, python-numpy, python-matplotlib
 
