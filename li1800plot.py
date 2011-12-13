@@ -2,6 +2,7 @@
 
 import sys
 import argparse
+import re
 import matplotlib.pyplot as pyplot
 from numpy import *
 
@@ -54,7 +55,7 @@ def plot(plotdata,title="LI1800 Spectra",outfilename="li1800plot"):
         plotarr = array(plotdatum)
         pyplot.plot(plotarr[:,0],plotarr[:,1],'-',label=plotnm)
     pyplot.legend(prop={"size": 10})
-    pyplot.savefig(outfilename.strip(".pdf")+".pdf",papertype='a4',orientation='landscape',dpi=300,format='pdf')
+    pyplot.savefig(re.sub(r"\.pdf$", "", outfilename)+".pdf",papertype='a4',orientation='landscape',dpi=300,format='pdf')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
