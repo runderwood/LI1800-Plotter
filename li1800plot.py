@@ -37,7 +37,7 @@ def parse_line(line):
         if len(toks) == 2:
             wlen,rdg = toks
         elif len(toks) == 3:
-            (wlen,rdg,exp) = 
+            (wlen,rdg,exp) = toks
             rdg = rdg + exp
         wlen = int(wlen)
         rdg = float(rdg)

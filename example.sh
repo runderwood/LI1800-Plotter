@@ -3,7 +3,7 @@
 python li1800plot.py \
     --outfile "li1800.topandbottom.pdf" \
     --title "Spathiphyllum Leaf Spectra" \
-    --infiles reft.txt trt.txt abst.txt refb.txt trb.txt absb.txt \
+    --infiles data/reft.txt data/trt.txt data/abst.txt data/refb.txt data/trb.txt data/absb.txt \
     --labels "Top Reflectance" "Top Transmittance" "Top Absorptance" \
         "Bottom Reflectance" "Bottom Transmittance" "Bottom Absorptance"
 
