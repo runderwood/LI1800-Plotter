@@ -31,8 +31,12 @@ def parse_line(line):
     parsed = False
     line = line.strip()
     try:
-        (wlen,rdg,exp) = line.split(' ')
-        rdg = rdg + exp
+        toks = line.split(' ')
+        if len(toks) == 2:
+            wlen,rdg = toks
+        elif len(toks) == 3:
+            (wlen,rdg,exp) = 
+            rdg = rdg + exp
         wlen = int(wlen)
         rdg = float(rdg)
         parsed = (wlen,rdg)
