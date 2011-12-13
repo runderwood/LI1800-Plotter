@@ -9,7 +9,8 @@ def main(args):
     ap.add_argument('--xaxis', help="x axis label", nargs=1, default="wavelength")
     ap.add_argument('--yaxis', help="y axis label", nargs=1, default="intensity")
     ap.add_argument('--labels', help="plot labels", nargs="+")
-    ap.add_argument('--infiles', help="input files", nargs="+",required=True)
+    ap.add_argument('--infiles', help="input files", nargs="+", required=True)
+    ap.add_argument('--outfile', help="stem for output pdf", nargs=1, required=True)
     params = ap.parse_args(args).__dict__
     plotdata = []
     for infileno,infilenm in enumerate(params["infiles"]):
@@ -24,7 +25,7 @@ def main(args):
             if row:
                 rows.append(row)
         plotdata.append((plotnm,rows))
-    plot(plotdata,title=params["title"][0])
+    plot(plotdata,outfile=params["outfile"][0],title=params["title"][0])
 
 def parse_line(line):
     parsed = False
@@ -47,7 +48,7 @@ def plot(plotdata,title="LI1800 Spectra",outfilenm="li1800plot"):
         plotarr = array(plotdatum)
         pyplot.plot(plotarr[:,0],plotarr[:,1],'-',label=plotnm)
     pyplot.legend(prop={"size": 10})
-    pyplot.savefig(outfilenm+".pdf",papertype='a4',orientation='landscape',dpi=300,format='pdf')
+    pyplot.savefig(outfilenm.strip(".pdf")+".pdf",papertype='a4',orientation='landscape',dpi=300,format='pdf')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
