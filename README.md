@@ -7,4 +7,5 @@ Requires: Python, python-numpy, python-matplotlib
 The "tau.py" script takes a reflectance data file and a transmittance file and outputs transmissivity (tau) or absorptance (alpha):
 
 > python tau.py --reffile myreflectancefile.txt --txfile mytransmittancefile.txt
+
 > python tau.py --reffile myreflectancefile.txt --txfile mytransmittancefile.txt --alpha
