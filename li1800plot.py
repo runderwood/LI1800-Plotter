@@ -25,7 +25,7 @@ def main(args):
             if row:
                 rows.append(row)
         plotdata.append((plotnm,rows))
-    plot(plotdata,outfile=params["outfile"][0],title=params["title"][0])
+    plot(plotdata,outfilename=params["outfile"][0],title=params["title"][0])
 
 def parse_line(line):
     parsed = False
@@ -40,7 +40,7 @@ def parse_line(line):
         pass
     return parsed
 
-def plot(plotdata,title="LI1800 Spectra",outfilenm="li1800plot"):
+def plot(plotdata,title="LI1800 Spectra",outfilename="li1800plot"):
     pyplot.figure(1)
     pyplot.title(title)
     for plotnum,plotdatum in enumerate(plotdata):
@@ -48,7 +48,7 @@ def plot(plotdata,title="LI1800 Spectra",outfilenm="li1800plot"):
         plotarr = array(plotdatum)
         pyplot.plot(plotarr[:,0],plotarr[:,1],'-',label=plotnm)
     pyplot.legend(prop={"size": 10})
-    pyplot.savefig(outfilenm.strip(".pdf")+".pdf",papertype='a4',orientation='landscape',dpi=300,format='pdf')
+    pyplot.savefig(outfilename.strip(".pdf")+".pdf",papertype='a4',orientation='landscape',dpi=300,format='pdf')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
